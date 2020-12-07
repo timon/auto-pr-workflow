@@ -1,0 +1,31 @@
+on:
+  workflow_dispatch:
+  # To use with webhook:
+  #  http -j https://api.github.com/repos/timon/auto-pr-workflow/dispatches \
+  #   event_type=custom_event_name \
+  #   "Authorization: token [GITHUB_TOKEN]"
+  # repository_dispatch:
+  #   types: ["custom_event_name"]
+
+name: 1 - Create a dummy PR
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create a dummy changeset
+        run: |
+          mkdir -p runs
+          echo "Performing the automatic action" >runs/`date +%Y%m%d-%H%M%S`.txt
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GH_REPO_TOKEN }}
+          author: Github automation <developers@cerascreen.de>
+          branch: auto/pr
+          branch-suffix: timestamp
+          delete-branch: true
+          labels: automerge
+          title: Register new run
+          body: >
+            This is an automatic PR to register new github action run
