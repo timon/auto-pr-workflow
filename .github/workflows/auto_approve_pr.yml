@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: andrewmusgrave/automatic-pull-request-review@0.0.2
-        if: startsWith(github.head_ref, 'auto/pr-')'),
+        if: startsWith(github.head_ref, 'auto/pr-'),
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           event: APPROVE
