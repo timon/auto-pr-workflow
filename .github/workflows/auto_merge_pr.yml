@@ -16,7 +16,7 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     steps:
-    - uses: timon/automerge@feature/handle-check-suit-event
+    - uses: reitermarkus/automerge@v1
       with:
         token: ${{ secrets.GH_REPO_TOKEN }}
         pull-request: ${{ github.event.inputs.pull-request }}
