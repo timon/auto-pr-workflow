@@ -4,8 +4,8 @@ on:
   #  http -j https://api.github.com/repos/timon/auto-pr-workflow/dispatches \
   #   event_type=custom_event_name \
   #   "Authorization: token [GITHUB_TOKEN]"
-  # repository_dispatch:
-  #   types: ["custom_event_name"]
+  repository_dispatch:
+    types: ["custom_event_name"]
 
 name: 1 - Create a dummy PR
 jobs:
